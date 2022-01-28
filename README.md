@@ -1,5 +1,13 @@
 # AnimeApp
 
+## INTRO
+
+## ENTITY RELATIONSHIP DIAGRAMA (ERD):
+
+## ENDPOINTS
+
+## TOOLS USED
+
 ## USER STORIES
 | | 
 |:---|
@@ -14,3 +22,7 @@
 |9.	As a user, I would like to update my anime.
 |10. As a user, I would like to create a manga for an anime.
 |11. As a user, I would like to create a genre for an anime.
+
+
+## FUTURE CHANGES
+- 
