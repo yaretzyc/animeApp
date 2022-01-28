@@ -3,6 +3,7 @@
 ## INTRO
 
 ## ENTITY RELATIONSHIP DIAGRAMA (ERD):
+![img.png](pictures/lucidChart.png)
 
 ## ENDPOINTS
 
