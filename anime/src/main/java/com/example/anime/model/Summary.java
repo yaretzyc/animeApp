@@ -21,7 +21,10 @@ public class Summary {
     @Column
     String tags;
 
-    //map to anime
+    //map to anime ONE TO ONE
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "anime_id", referencedColumnName = "id")
+    private Anime anime;
 
 
 

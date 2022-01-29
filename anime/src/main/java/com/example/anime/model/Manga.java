@@ -1,5 +1,7 @@
 package com.example.anime.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +23,11 @@ public class Manga {
     Integer volumeNum;
 
     //CONNECT TO THE ANIME_ID
+//
+    @JsonIgnore//IN THE JSON WILL NOT SHOW CATEGORY ID AS A COLUMN
+    @ManyToOne
+    @JoinColumn(name = "anime_id") //fk for the recipes table creating a new column
+    private Anime anime;
 
 
 

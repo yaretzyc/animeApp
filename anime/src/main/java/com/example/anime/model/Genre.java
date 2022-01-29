@@ -3,6 +3,8 @@ package com.example.anime.model;
 import com.sun.jdi.NativeMethodException;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "genres")
@@ -18,7 +20,14 @@ public class Genre {
 
     //JOIN COLUMN WITH ANIME
 
-    //CONSTRUCTORS
+    @ManyToMany
+    @JoinTable(
+            name = "anime_genre",
+            joinColumns = @JoinColumn(name = "genre_id"),
+            inverseJoinColumns = @JoinColumn(name = "anime_id")
+    )
+    private Set<Anime> animesgenres = new HashSet<>();
+//    //CONSTRUCTORS
 
     public Genre() {
     }
