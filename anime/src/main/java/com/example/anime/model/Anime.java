@@ -74,6 +74,30 @@ public class Anime {
     //GENERATE GETTERS AND SETTERS
 
 
+    public Summary getSummary() {
+        return summary;
+    }
+
+    public void setSummary(Summary summary) {
+        this.summary = summary;
+    }
+
+    public List<Manga> getMangaList() {
+        return mangaList;
+    }
+
+    public void setMangaList(List<Manga> mangaList) {
+        this.mangaList = mangaList;
+    }
+
+    public Set<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
+    }
+
     public Long getId() {
         return id;
     }

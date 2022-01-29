@@ -40,6 +40,15 @@ public class Genre {
     //GETTERS AND SETTERS
 
 
+
+    public Set<Anime> getAnimesgenres() {
+        return animesgenres;
+    }
+
+    public void setAnimesgenres(Set<Anime> animesgenres) {
+        this.animesgenres = animesgenres;
+    }
+
     public Long getId() {
         return id;
     }

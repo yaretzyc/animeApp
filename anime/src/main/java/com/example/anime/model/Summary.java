@@ -44,6 +44,14 @@ public class Summary {
     //getters and setters
 
 
+    public Anime getAnime() {
+        return anime;
+    }
+
+    public void setAnime(Anime anime) {
+        this.anime = anime;
+    }
+
     public Long getId() {
         return id;
     }
