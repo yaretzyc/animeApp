@@ -46,13 +46,14 @@ public class AnimeController {
     }
 
 
- /*
     //UPDATE AN ANIME WITH ITS ID GIVEN
     @PutMapping("/animes/{animeId}")
     public Anime updateAnime(@PathVariable(value = "animeId")Long animeId,
                              @RequestBody Anime animeObj){
         return animeService.updateAnime(animeId, animeObj);
     }
+
+ /*
 
     //OPTION TO ALSO DELETE AN ANIME WITH  ID
     @DeleteMapping("/animes/{animeId}")

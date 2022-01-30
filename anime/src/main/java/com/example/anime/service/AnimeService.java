@@ -80,6 +80,27 @@ public class AnimeService {
                              @RequestBody Anime animeObj){
         return animeService.updateAnime(animeId, animeObj);
     }
+    */
+
+
+    public Anime updateAnime(Long animeId, Anime animeObj){
+        System.out.println("Service calling updateAnime ==>");
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if(anime.isPresent()){
+            Anime updateAnime = animeRepository.findById(animeId).get();
+            updateAnime.setName(animeObj.getName());
+            updateAnime.setStudio(animeObj.getStudio());
+            updateAnime.setScore(animeObj.getScore());
+            updateAnime.setEpisodes(animeObj.getEpisodes());
+            updateAnime.setComplete(animeObj.getComplete());
+            updateAnime.setSeason(animeObj.getSeason());
+            return animeRepository.save(updateAnime);
+        }else{
+            throw new InformationNotFoundException("Anime with id " + animeId + " not found");
+        }
+
+    }
+    /*
 
     //OPTION TO ALSO DELETE AN ANIME WITH  ID
     @DeleteMapping("/animes/{animeId}")
@@ -87,5 +108,6 @@ public class AnimeService {
         return animeService.deleteAnime(animeId);
     }
      */
+    
 
 }
