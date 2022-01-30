@@ -108,6 +108,15 @@ public class AnimeService {
         return animeService.deleteAnime(animeId);
     }
      */
-    
+
+    public Optional<Anime> deleteAnime(long animeId){
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if(anime.isPresent()){
+            animeRepository.deleteById(animeId);
+            return anime;
+        }else{
+            throw new InformationNotFoundException("Anime with id " + animeId + " not found");
+        }
+    }
 
 }

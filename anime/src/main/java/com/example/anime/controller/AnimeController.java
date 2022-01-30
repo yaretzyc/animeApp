@@ -53,15 +53,15 @@ public class AnimeController {
         return animeService.updateAnime(animeId, animeObj);
     }
 
- /*
 
     //OPTION TO ALSO DELETE AN ANIME WITH  ID
     @DeleteMapping("/animes/{animeId}")
-    public Anime deleteAnime(@PathVariable(value = "animeId")Long animeId){
+    public Optional<Anime> deleteAnime(@PathVariable(value = "animeId")Long animeId){
         return animeService.deleteAnime(animeId);
     }
 
 ///////////////////////////////SUMMARY\\\\\\\\\\\\\\\\\\\
+ /*
 
     //CREATE SUMMARY
     @PostMapping("/animes/{animeId}/summary")
