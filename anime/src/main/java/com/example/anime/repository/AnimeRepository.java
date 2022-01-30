@@ -1,5 +1,10 @@
 package com.example.anime.repository;
 
 
-public interface AnimeRepository {
+import com.example.anime.model.Anime;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AnimeRepository extends JpaRepository<Anime, Long> {
+
+
 }
