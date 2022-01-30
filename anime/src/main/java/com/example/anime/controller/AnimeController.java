@@ -61,13 +61,15 @@ public class AnimeController {
     }
 
 ///////////////////////////////SUMMARY\\\\\\\\\\\\\\\\\\\
- /*
 
     //CREATE SUMMARY
     @PostMapping("/animes/{animeId}/summary")
-    public Summary createAnimeSummary(@PathVariable (value = "animeId")Long animeId){
-        return animeService.createAnimeSummary(animeId);
+    public Summary createAnimeSummary(@PathVariable (value = "animeId")Long animeId,
+                                      @RequestBody Summary sumObj){
+        return animeService.createAnimeSummary(animeId, sumObj);
     }
+
+ /*
 
     //GET SUMMARY
     @GetMapping("/animes/{animeId}/summary")

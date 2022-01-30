@@ -3,7 +3,9 @@ package com.example.anime.service;
 import com.example.anime.exceptions.InformationExistException;
 import com.example.anime.exceptions.InformationNotFoundException;
 import com.example.anime.model.Anime;
+import com.example.anime.model.Summary;
 import com.example.anime.repository.AnimeRepository;
+import com.example.anime.repository.SummaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,13 @@ public class AnimeService {
     @Autowired
     public void setAnimeRepository(AnimeRepository animeRepository){
         this.animeRepository = animeRepository;
+    }
+
+    private SummaryRepository summaryRepository;
+
+    @Autowired
+    public void setSummaryRepository(SummaryRepository summaryRepository){
+        this.summaryRepository = summaryRepository;
     }
 
     /*
@@ -118,5 +127,51 @@ public class AnimeService {
             throw new InformationNotFoundException("Anime with id " + animeId + " not found");
         }
     }
+
+    /////////////////////////////SUMMARY \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    //CREATE SUMMARY
+//    @PostMapping("/animes/{animeId}/summary")
+//    public Summary createAnimeSummary(@PathVariable (value = "animeId")Long animeId){
+//        return animeService.createAnimeSummary(animeId);
+//    }
+
+    public Summary createAnimeSummary(Long animeId, Summary sumObj){
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if(anime.isPresent()){
+            sumObj.setAnime(anime.get());
+            return summaryRepository.save(sumObj);
+        }else{
+            throw new InformationNotFoundException("Anime with id " + animeId + " not found");
+        }
+    }
+
+
+     /*
+    //GET SUMMARY
+    @GetMapping("/animes/{animeId}/summary")
+    public Summary getAnimeSummary(@PathVariable(value = "animeId")Long animeId){
+        return animeService.getAnimeSummary(animeId);
+    }
+    */
+    
+
+
+
+    /*
+
+    //UPDATE SUMMARY
+    @PutMapping("/animes/{animeId}/summary")
+    public Summary updateAnimeSummary(@PathVariable(value = "animeId")Long animeId){
+        return animeService.updateAnimeSummary(animeId);
+    }
+
+    //DELETE SUMMARY
+    @DeleteMapping("/animes/{animeId}/summary")
+    public Summary deleteAnimeSummary(@PathVariable(value = "animeId")Long animeId){
+        return animeService.deleteAnimeSummary(animeId);
+    }
+
+
+       */
 
 }
