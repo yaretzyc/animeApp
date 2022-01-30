@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -36,14 +37,16 @@ public class AnimeController {
         return animeService.createAnime(animeObj);
     }
 
-    /*
+
 
     //GET A SPECIFIC ANIME WITH ITS ID
     @GetMapping("/animes/{animeId}")
-    public Anime getAnime(@PathVariable Long animeId){
+    public Optional<Anime> getAnime(@PathVariable Long animeId){
         return animeService.getAnime(animeId);
     }
 
+
+ /*
     //UPDATE AN ANIME WITH ITS ID GIVEN
     @PutMapping("/animes/{animeId}")
     public Anime updateAnime(@PathVariable(value = "animeId")Long animeId,

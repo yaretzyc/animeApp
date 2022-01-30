@@ -1,12 +1,14 @@
 package com.example.anime.service;
 
 import com.example.anime.exceptions.InformationExistException;
+import com.example.anime.exceptions.InformationNotFoundException;
 import com.example.anime.model.Anime;
 import com.example.anime.repository.AnimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnimeService {
@@ -51,18 +53,26 @@ public class AnimeService {
         }
 
     }
-
-
-
-
     /*
-
-
     //GET A SPECIFIC ANIME WITH ITS ID
     @GetMapping("/animes/{animeId}")
     public Anime getAnime(@PathVariable Long animeId){
         return animeService.getAnime(animeId);
     }
+    */
+
+    public Optional<Anime> getAnime(Long animeId){
+
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if(anime.isPresent()){
+            return anime;
+        }else{
+            throw new InformationNotFoundException("Anime with id of " + animeId +  " not found");
+        }
+
+    }
+
+    /*
 
     //UPDATE AN ANIME WITH ITS ID GIVEN
     @PutMapping("/animes/{animeId}")
@@ -76,10 +86,6 @@ public class AnimeService {
     public Anime deleteAnime(@PathVariable(value = "animeId")Long animeId){
         return animeService.deleteAnime(animeId);
     }
-
-
-
-
      */
 
 }
