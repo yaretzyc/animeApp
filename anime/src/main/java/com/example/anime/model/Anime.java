@@ -51,8 +51,16 @@ public class Anime {
 
     //JOIN COLUMM WITH GENRE
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "animesgenres")
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "animesgenres")
+//    private Set<Genre> genres = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH,
+                    CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "anime_genre",
+            joinColumns = {@JoinColumn(name = "anime_id")},
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private Set<Genre> genres = new HashSet<>();
 
 

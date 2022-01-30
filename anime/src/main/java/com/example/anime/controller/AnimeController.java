@@ -29,6 +29,7 @@ public class AnimeController {
     public List<Anime> getAllAnimes(){
         return animeService.getAllAnimes();
     }
+    /*
 
     //CREATE AN ANIME
     @PostMapping("/animes/")
@@ -123,5 +124,7 @@ public class AnimeController {
 
 
 
+
+     */
 
 }

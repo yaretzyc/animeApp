@@ -20,13 +20,23 @@ public class Genre {
 
     //JOIN COLUMN WITH ANIME
 
-    @ManyToMany
-    @JoinTable(
-            name = "anime_genre",
-            joinColumns = @JoinColumn(name = "genre_id"),
-            inverseJoinColumns = @JoinColumn(name = "anime_id")
-    )
-    private Set<Anime> animesgenres = new HashSet<>();
+//    @ManyToMany
+//    @JoinTable(
+//            name = "anime_genre",
+//            joinColumns = @JoinColumn(name = "genre_id"),
+//            inverseJoinColumns = @JoinColumn(name = "anime_id")
+//    )
+//    private Set<Anime> animesgenres = new HashSet<>();
+@ManyToMany(fetch = FetchType.LAZY,
+        cascade = {CascadeType.DETACH,
+                CascadeType.MERGE, CascadeType.REFRESH})
+@JoinTable(
+        name = "anime_genre",
+        joinColumns = @JoinColumn(name = "genre_id"),
+        inverseJoinColumns = @JoinColumn(name = "anime_id")
+)
+private Set<Anime> animesgenres = new HashSet<>();
+
 //    //CONSTRUCTORS
 
     public Genre() {
