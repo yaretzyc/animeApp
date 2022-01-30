@@ -1,6 +1,7 @@
 package com.example.anime.controller;
 
 import com.example.anime.model.Anime;
+import com.example.anime.model.Manga;
 import com.example.anime.model.Summary;
 import com.example.anime.service.AnimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +80,12 @@ public class AnimeController {
     public Summary deleteAnimeSummary(@PathVariable(value = "animeId")Long animeId){
         return animeService.deleteAnimeSummary(animeId);
     }
+
+    //////////////MANGAS\\\\\\\\\\\\\\\\\\\\\ONE TO MANY
+    //CREATE A MANGA
+    @PostMapping("/animes/{animeId}/mangas/{mangaId}")
+    public Manga createAnimeManga
+
 
 
 
