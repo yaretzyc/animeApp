@@ -117,7 +117,9 @@ public class AnimeController {
     }
 
 
-//    @PutMapping("/anime/{animeId}/genres/{genreId}")
+
+    //////////////////GENRE\\\\\\\\\\\\\\\\\\ MANY TO MANY RELATIONSHIP
+    @PutMapping("/anime/{animeId}/genres/{genreId}")
 
 
 
