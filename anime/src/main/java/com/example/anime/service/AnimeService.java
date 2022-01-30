@@ -1,5 +1,6 @@
 package com.example.anime.service;
 
+import com.example.anime.exceptions.InformationExistException;
 import com.example.anime.model.Anime;
 import com.example.anime.repository.AnimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,25 @@ public class AnimeService {
     public Anime createAnime(@RequestBody Anime animeObj){
         return animeService.createAnime(animeObj);
     }
+    */
+
+    public Anime createAnime(Anime animeObj){
+        System.out.println("service calling createAnime ==>");
+
+        Anime anime = animeRepository.findByName(animeObj.getName());
+        if(anime != null){
+            throw new InformationExistException("Anime with title " + anime.getName() + " already exists");
+        }else{
+            return animeRepository.save(animeObj);
+        }
+
+    }
+
+
+
+
+    /*
+
 
     //GET A SPECIFIC ANIME WITH ITS ID
     @GetMapping("/animes/{animeId}")

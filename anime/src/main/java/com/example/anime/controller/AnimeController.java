@@ -29,13 +29,14 @@ public class AnimeController {
     public List<Anime> getAllAnimes(){
         return animeService.getAllAnimes();
     }
-    /*
 
     //CREATE AN ANIME
     @PostMapping("/animes/")
     public Anime createAnime(@RequestBody Anime animeObj){
         return animeService.createAnime(animeObj);
     }
+
+    /*
 
     //GET A SPECIFIC ANIME WITH ITS ID
     @GetMapping("/animes/{animeId}")
