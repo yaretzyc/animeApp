@@ -83,10 +83,38 @@ public class AnimeController {
 
     //////////////MANGAS\\\\\\\\\\\\\\\\\\\\\ONE TO MANY
     //CREATE A MANGA
-    @PostMapping("/animes/{animeId}/mangas/{mangaId}")
-    public Manga createAnimeManga
+    @PostMapping("/animes/{animeId}/mangas/")
+    public Manga createAnimeManga(@PathVariable(value = "animeId")Long animeId,
+                                  @RequestBody Manga mangaObj){
+        return animeService.createAnimeManga(animeId, mangaObj);
+    }
 
+    ///GET A MANGA FOR A ANIME
+    @GetMapping("/animes/{animeId}/mangas/{mangaId}")
+    public Manga getAnimeManga(@PathVariable(value = "animeId")Long animeId,
+                                  @PathVariable(value = "mangaId")Long mangaId){
+        return animeService.getAnimeManga(animeId, mangaId);
+    }
+    //GET ALL MANGAS FOR AN ANIME
+    @GetMapping("/animes/{animeId}/mangas")
+    public List<Manga> getAllAnimeManga(@PathVariable(value = "animeId")Long animeId){
+        return animeService.getAllAnimeManga(animeId);
+    }
 
+    ///UPDATE A MANGA
+    @PutMapping("/animes/{animeId}/mangas/{mangaId}")
+    public Manga updateAnimeManga(@PathVariable(value = "animeId")Long animeId,
+                                  @PathVariable(value = "mangaId")Long mangaId,
+                                  @RequestBody Manga mangaObj){
+        return animeService.updateAnimeManga(animeId, mangaId, mangaObj);
+    }
+
+    ///DELETE A MANGA
+    @DeleteMapping("/animes/{animeId}/mangas/{mangaId}")
+    public Manga deleteAnimeManga(@PathVariable (value = "animeId")Long animeId,
+                                  @PathVariable(value = "mangaId")Long mangaId){
+        return animeService.deleteAnimeManga(animeId, mangaId);
+    }
 
 
 //    @PutMapping("/anime/{animeId}/genres/{genreId}")
