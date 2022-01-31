@@ -1,6 +1,7 @@
 package com.example.anime.controller;
 
 import com.example.anime.model.Anime;
+import com.example.anime.model.Genre;
 import com.example.anime.model.Manga;
 import com.example.anime.model.Summary;
 import com.example.anime.service.AnimeService;
@@ -129,11 +130,32 @@ public class AnimeController {
 
  /*
     //////////////////GENRE\\\\\\\\\\\\\\\\\\ MANY TO MANY RELATIONSHIP
-    //create a genre for an anime
     //delete a genre for an anime
-    //get all genres for an anime
     @PutMapping("/anime/{animeId}/genres/")
    */
+    //create a genre for an anime
+//    @PostMapping("/animes/{animeId}/genre/")
+//    public Genre createAnimeGenre(@PathVariable(value = "animeId")Long animeId,
+//                                  @RequestBody Genre genreObj){
+//        return animeService.createAnimeGenre(animeId, genreObj);
+//    }
+
+    //create genre
+    //REFERENCE : https://www.youtube.com/watch?v=f5bdUjEIbrg&t=478s&ab_channel=KrisFoster
+    @PostMapping("/genres/")
+    public Genre createGenre(@RequestBody Genre genreObj){
+        return animeService.createGenre(genreObj);
+    }
+
+    //put for a anime using the id
+    @PutMapping("/{genreId}/animes/{animeId}/")
+    public Genre putAnimeGenre(@PathVariable(value = "genreId")Long genreId,
+                               @PathVariable(value = "animeId")Long animeId){
+        return animeService.putAnimeGenre(genreId, animeId);
+    }
+
+
+    //get all genres for an anime
 
 
 
