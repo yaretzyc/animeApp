@@ -37,6 +37,8 @@ public class Genre {
 )
 private Set<Anime> animesgenres = new HashSet<>();
 
+
+
 //    //CONSTRUCTORS
 
     public Genre() {
@@ -73,5 +75,9 @@ private Set<Anime> animesgenres = new HashSet<>();
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public void assignAnime(Anime anime) {
+        animesgenres.add(anime);
     }
 }
