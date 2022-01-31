@@ -106,7 +106,6 @@ public class AnimeController {
                                   @PathVariable(value = "mangaId")Long mangaId){
         return animeService.getAnimeManga(animeId, mangaId);
     }
- /*
     //GET ALL MANGAS FOR AN ANIME
     @GetMapping("/animes/{animeId}/mangas")
     public List<Manga> getAllAnimeManga(@PathVariable(value = "animeId")Long animeId){
@@ -114,12 +113,13 @@ public class AnimeController {
     }
 
     ///UPDATE A MANGA
-    @PutMapping("/animes/{animeId}/mangas/{mangaId}")
+    @PutMapping("/animes/{animeId}/mangas/{mangaId}/")
     public Manga updateAnimeManga(@PathVariable(value = "animeId")Long animeId,
                                   @PathVariable(value = "mangaId")Long mangaId,
                                   @RequestBody Manga mangaObj){
         return animeService.updateAnimeManga(animeId, mangaId, mangaObj);
     }
+ /*
 
     ///DELETE A MANGA
     @DeleteMapping("/animes/{animeId}/mangas/{mangaId}")
@@ -131,7 +131,10 @@ public class AnimeController {
 
 
     //////////////////GENRE\\\\\\\\\\\\\\\\\\ MANY TO MANY RELATIONSHIP
-    @PutMapping("/anime/{animeId}/genres/{genreId}")
+    //create a genre for an anime
+    //delete a genre for an anime
+    //get all genres for an anime
+    @PutMapping("/anime/{animeId}/genres/")
 
 
 

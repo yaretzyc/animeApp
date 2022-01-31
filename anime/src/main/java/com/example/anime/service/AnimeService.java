@@ -257,10 +257,38 @@ public class AnimeService {
 
     }
 
+    public List<Manga> getAllAnimeManga(Long animeId){
+        System.out.println("service calling getAllAnimeManga ==>");
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if(anime.isPresent()){
+            return anime.get().getMangaList();
+                }
+            throw new InformationNotFoundException("anime with id " + animeId + " not found");
+    }
 
 
+    //UPDATE A MANGA
+    public Manga updateAnimeManga(Long animeId, Long mangaId, Manga mangaObj){
+
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if (anime.isPresent()) {
+            for (Manga manga : anime.get().getMangaList()) {
+                if (manga.getId() == mangaId) {
+                    Manga updateManga = mangaRepository.findById(mangaId).get();
+                    updateManga.setTitle(mangaObj.getTitle());
+                    updateManga.setAuthor(mangaObj.getAuthor());
+                    updateManga.setVolumeNum(mangaObj.getVolumeNum());
+
+                    return mangaRepository.save(updateManga);
+                }
+                throw new InformationNotFoundException("manga with id " + mangaId + " not found");
+            }
+        }
+        throw new InformationNotFoundException("anime with id "+ animeId + " not found");
+    }
 
 }
+
 
 
 
