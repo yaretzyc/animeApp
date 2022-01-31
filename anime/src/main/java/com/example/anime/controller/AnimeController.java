@@ -119,26 +119,24 @@ public class AnimeController {
                                   @RequestBody Manga mangaObj){
         return animeService.updateAnimeManga(animeId, mangaId, mangaObj);
     }
- /*
 
     ///DELETE A MANGA
     @DeleteMapping("/animes/{animeId}/mangas/{mangaId}")
-    public Manga deleteAnimeManga(@PathVariable (value = "animeId")Long animeId,
+    public Optional<Manga> deleteAnimeManga(@PathVariable (value = "animeId")Long animeId,
                                   @PathVariable(value = "mangaId")Long mangaId){
         return animeService.deleteAnimeManga(animeId, mangaId);
     }
 
-
-
+ /*
     //////////////////GENRE\\\\\\\\\\\\\\\\\\ MANY TO MANY RELATIONSHIP
     //create a genre for an anime
     //delete a genre for an anime
     //get all genres for an anime
     @PutMapping("/anime/{animeId}/genres/")
+   */
 
 
 
 
-     */
 
 }

@@ -287,6 +287,25 @@ public class AnimeService {
         throw new InformationNotFoundException("anime with id "+ animeId + " not found");
     }
 
+
+    public Optional<Manga> deleteAnimeManga(Long animeId, Long mangaId){
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if(anime.isPresent()){
+            for (Manga manga : anime.get().getMangaList()) {
+                if (manga.getId() == mangaId) {
+                    Manga mangaFind = mangaRepository.findById(mangaId).get();
+                    mangaRepository.deleteById(mangaId);
+                    return Optional.of(mangaFind);
+                }
+                throw new InformationNotFoundException("manga with id " + mangaId + " not found");
+            }
+
+        }
+        throw new InformationNotFoundException("anime with id "+ animeId + " not found");
+
+    }
+
+
 }
 
 
