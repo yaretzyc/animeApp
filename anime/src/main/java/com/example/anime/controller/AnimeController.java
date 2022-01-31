@@ -98,7 +98,7 @@ public class AnimeController {
                                   @RequestBody Manga mangaObj){
         return animeService.createAnimeManga(animeId, mangaObj);
     }
- /*
+
 
     ///GET A MANGA FOR A ANIME
     @GetMapping("/animes/{animeId}/mangas/{mangaId}")
@@ -106,6 +106,7 @@ public class AnimeController {
                                   @PathVariable(value = "mangaId")Long mangaId){
         return animeService.getAnimeManga(animeId, mangaId);
     }
+ /*
     //GET ALL MANGAS FOR AN ANIME
     @GetMapping("/animes/{animeId}/mangas")
     public List<Manga> getAllAnimeManga(@PathVariable(value = "animeId")Long animeId){

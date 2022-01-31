@@ -228,6 +228,7 @@ public class AnimeService {
        */
 
     /////////////////////MANGAS''''''''''''''''
+
     public Manga createAnimeManga(Long animeId, Manga mangaObj){
 
         System.out.println("service calling createAnimeManga ==>");
@@ -240,10 +241,26 @@ public class AnimeService {
 
     }
 
-
-
+    //GET MANGA FROM ANIME
+    public Manga getAnimeManga(Long animeId, Long mangaId){
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if(anime.isPresent()){
+            for(Manga manga: anime.get().getMangaList()){
+                if(manga.getId() == mangaId){
+                    return manga;
+                }
+            }
+            throw new InformationNotFoundException("Manga with id " +  mangaId + " not found");
+        }else{
+            throw new InformationNotFoundException("anime with id " + animeId + " not found");
+        }
 
     }
+
+
+
+
+}
 
 
 
