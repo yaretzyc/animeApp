@@ -56,7 +56,7 @@ public class Anime {
 //    @JsonIgnore
 //    @ManyToMany(mappedBy = "animesgenres")
 //    private Set<Genre> genres = new HashSet<>();
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH,
                     CascadeType.MERGE, CascadeType.REFRESH})
