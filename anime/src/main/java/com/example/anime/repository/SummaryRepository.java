@@ -6,5 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SummaryRepository extends JpaRepository<Summary, Long> {
-
+//    Summary findByAnimeIdAneSummaryTitle(Long animeId, String summaryTitle);
+//
+//    Summary findByTitle(String summaryTitle);
+//    Summary findByAnimeId(Long animeId);
+//
 }

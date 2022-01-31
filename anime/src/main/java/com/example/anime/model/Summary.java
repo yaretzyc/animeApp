@@ -1,5 +1,7 @@
 package com.example.anime.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,8 +24,10 @@ public class Summary {
     String tags;
 
     //map to anime ONE TO ONE
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "anime_id", referencedColumnName = "id")
+//    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "anime_id", referencedColumnName = "id")
+    @JsonIgnore
+    @OneToOne(mappedBy = "summary")
     private Anime anime;
 
 

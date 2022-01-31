@@ -40,8 +40,10 @@ public class Anime {
 
 
     // MAP TO  summary
-    @JsonIgnore
-    @OneToOne(mappedBy = "anime")
+//    @JsonIgnore
+//    @OneToOne(mappedBy = "anime")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "summary_id", referencedColumnName = "id")
     private Summary summary;
 
     //one anime has many mangas

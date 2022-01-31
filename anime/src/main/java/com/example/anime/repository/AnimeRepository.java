@@ -2,6 +2,7 @@ package com.example.anime.repository;
 
 
 import com.example.anime.model.Anime;
+import com.example.anime.model.Summary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,5 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface AnimeRepository extends JpaRepository<Anime, Long> {
 
     Anime findByName(String animeName);
+
+
 
 }

@@ -3,8 +3,10 @@ package com.example.anime.service;
 import com.example.anime.exceptions.InformationExistException;
 import com.example.anime.exceptions.InformationNotFoundException;
 import com.example.anime.model.Anime;
+import com.example.anime.model.Manga;
 import com.example.anime.model.Summary;
 import com.example.anime.repository.AnimeRepository;
+import com.example.anime.repository.MangaRepository;
 import com.example.anime.repository.SummaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,12 @@ public class AnimeService {
         this.summaryRepository = summaryRepository;
     }
 
+    private MangaRepository mangaRepository;
+
+    @Autowired
+    public void setMangaRepository(MangaRepository mangaRepository){
+        this.mangaRepository = mangaRepository;
+    }
     /*
     @GetMapping("/animes/")
     public List<Anime> getAllAnimes(){
@@ -135,36 +143,81 @@ public class AnimeService {
 //        return animeService.createAnimeSummary(animeId);
 //    }
 
-    public Summary createAnimeSummary(Long animeId, Summary sumObj){
-        Optional<Anime> anime = animeRepository.findById(animeId);
-        if(anime.isPresent()){
-            sumObj.setAnime(anime.get());
-            return summaryRepository.save(sumObj);
-        }else{
-            throw new InformationNotFoundException("Anime with id " + animeId + " not found");
-        }
-    }
+//    public Summary createAnimeSummary(Long animeId, Summary sumObj){
+//        System.out.println("Service calling createAnimeSummary ==> ");
+//        Optional<Anime> anime = animeRepository.findById(animeId);
+//        if(anime.isPresent()){
+//            sumObj.setAnime(anime.get());
+//            return summaryRepository.save(sumObj);
+//        }else{
+//            throw new InformationNotFoundException("Anime with id " + animeId + " not found");
+//        }
+//    }
 
 
-     /*
-    //GET SUMMARY
-    @GetMapping("/animes/{animeId}/summary")
-    public Summary getAnimeSummary(@PathVariable(value = "animeId")Long animeId){
-        return animeService.getAnimeSummary(animeId);
-    }
-    */
-    
+////NEED TO ADD INOFMATION NOT FOUND IN CASE SUMMARY DOESN'T EXIST
+//    public Summary getAnimeSummary(Long animeId){
+//        Optional<Anime> anime = animeRepository.findById(animeId);
+//        if(anime != null){
+//            return anime.get().getSummary();
+//        }else{
+//            throw new InformationNotFoundException("Anime with id " + animeId + " not found");
+//        }
+//
+////        Summary summary = summaryRepository.findByAnimeId(animeId);
+////        if (summary == null) {
+////            throw new InformationNotFoundException("anime with id " + null +
+////                    " does not have an existing summary");
+//        }
 
 
+////        Optional<Summary> summary = summaryRepository.findByAnimeId(animeId).getAnime().getSummary();
+//        Summary summary = summaryRepository.findByAnimeId();
+//
+//        if(summary == false){
+//            return null;
+//        }else{
+////        if(anime.get().getSummary() != null){
+//            throw new InformationExistException("Anime with id " + animeId + " does not have a summary");
+//        }
 
-    /*
+
 
     //UPDATE SUMMARY
-    @PutMapping("/animes/{animeId}/summary")
-    public Summary updateAnimeSummary(@PathVariable(value = "animeId")Long animeId){
-        return animeService.updateAnimeSummary(animeId);
-    }
+//    public Summary updateAnimeSummary(Long animeId, Summary summaryObj){
+//        Optional<Anime> anime = animeRepository.findById(animeId);
+//        if (anime == null ){
+//            throw new InformationNotFoundException("anime with id " + animeId + " was not found");
+//        }
 
+//        Summary oldSummary = summaryRepository.findByAnimeIdAneSummaryTitle(animeId, summaryObj.getTitle());
+//        if(oldSummary != null){
+//            throw new InformationExistException("summary with title " + oldSummary.getTitle() + " already exists");
+//        }
+
+//        return  summaryRepository.findById(animeId).map(sum -> {
+//            sum.setTitle(summaryObj.getTitle());
+//            sum.setSummary(summaryObj.getSummary());
+//            sum.setTags(summaryObj.getTags());
+//            return summaryRepository.save(sum);
+//                }).orElseThrow(() -> new InformationNotFoundException("summary not found"));
+//
+////        Optional<Summary> summary = summaryRepository.findByAnimeId(animeId);
+//        */
+
+//    }
+
+//    public Summary createAnimeSummary(Long animeId, Summary sumObj){
+//        System.out.println("Service calling createAnimeSummary ==> ");
+//        Optional<Anime> anime = animeRepository.findById(animeId);
+//        if(anime.isPresent()){
+//            sumObj.setAnime(anime.get());
+//            return summaryRepository.save(sumObj);
+//        }else{
+//            throw new InformationNotFoundException("Anime with id " + animeId + " not found");
+//        }
+//    }
+       /*
     //DELETE SUMMARY
     @DeleteMapping("/animes/{animeId}/summary")
     public Summary deleteAnimeSummary(@PathVariable(value = "animeId")Long animeId){
@@ -174,4 +227,29 @@ public class AnimeService {
 
        */
 
-}
+    /////////////////////MANGAS''''''''''''''''
+    public Manga createAnimeManga(Long animeId, Manga mangaObj){
+
+        System.out.println("service calling createAnimeManga ==>");
+        Optional<Anime> anime = animeRepository.findById(animeId);
+        if(anime == null){
+            throw new InformationNotFoundException("anime with id " + animeId + "not found");
+        }
+        mangaObj.setAnime(anime.get());
+        return mangaRepository.save(mangaObj);
+
+    }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+

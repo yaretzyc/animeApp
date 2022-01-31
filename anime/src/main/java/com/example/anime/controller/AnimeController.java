@@ -61,7 +61,7 @@ public class AnimeController {
     }
 
 ///////////////////////////////SUMMARY\\\\\\\\\\\\\\\\\\\
-
+/*
     //CREATE SUMMARY
     @PostMapping("/animes/{animeId}/summary")
     public Summary createAnimeSummary(@PathVariable (value = "animeId")Long animeId,
@@ -69,26 +69,28 @@ public class AnimeController {
         return animeService.createAnimeSummary(animeId, sumObj);
     }
 
- /*
 
     //GET SUMMARY
-    @GetMapping("/animes/{animeId}/summary")
+    @GetMapping("/animes/{animeId}/summary/")
     public Summary getAnimeSummary(@PathVariable(value = "animeId")Long animeId){
         return animeService.getAnimeSummary(animeId);
     }
 
+
     //UPDATE SUMMARY
-    @PutMapping("/animes/{animeId}/summary")
-    public Summary updateAnimeSummary(@PathVariable(value = "animeId")Long animeId){
-        return animeService.updateAnimeSummary(animeId);
+    @PutMapping("/animes/{animeId}/summary/")
+    public Summary updateAnimeSummary(@PathVariable(value = "animeId")Long animeId,
+                                      @RequestBody Summary summaryObj){
+        return animeService.updateAnimeSummary(animeId, summaryObj);
     }
+
 
     //DELETE SUMMARY
     @DeleteMapping("/animes/{animeId}/summary")
     public Summary deleteAnimeSummary(@PathVariable(value = "animeId")Long animeId){
         return animeService.deleteAnimeSummary(animeId);
     }
-
+ */
     //////////////MANGAS\\\\\\\\\\\\\\\\\\\\\ONE TO MANY
     //CREATE A MANGA
     @PostMapping("/animes/{animeId}/mangas/")
@@ -96,6 +98,7 @@ public class AnimeController {
                                   @RequestBody Manga mangaObj){
         return animeService.createAnimeManga(animeId, mangaObj);
     }
+ /*
 
     ///GET A MANGA FOR A ANIME
     @GetMapping("/animes/{animeId}/mangas/{mangaId}")
