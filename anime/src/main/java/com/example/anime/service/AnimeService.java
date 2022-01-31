@@ -3,9 +3,11 @@ package com.example.anime.service;
 import com.example.anime.exceptions.InformationExistException;
 import com.example.anime.exceptions.InformationNotFoundException;
 import com.example.anime.model.Anime;
+import com.example.anime.model.Genre;
 import com.example.anime.model.Manga;
 import com.example.anime.model.Summary;
 import com.example.anime.repository.AnimeRepository;
+import com.example.anime.repository.GenreRepository;
 import com.example.anime.repository.MangaRepository;
 import com.example.anime.repository.SummaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class AnimeService {
@@ -36,6 +39,13 @@ public class AnimeService {
     @Autowired
     public void setMangaRepository(MangaRepository mangaRepository){
         this.mangaRepository = mangaRepository;
+    }
+
+    private GenreRepository genreRepository;
+
+    @Autowired
+    public void setGenreRepository(GenreRepository genreRepository){
+        this.genreRepository = genreRepository;
     }
     /*
     @GetMapping("/animes/")
@@ -306,6 +316,33 @@ public class AnimeService {
     }
 
 
+    /////////////////////////GENRES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//    public Genre createAnimeGenre(Long animeId, Genre genreObj){
+//
+//        System.out.println("service calling createAnimeGenre ==>");
+//        Optional<Anime> anime = animeRepository.findById(animeId);
+//        if(anime == null){
+//            throw new InformationNotFoundException("anime with id " + animeId + "not found");
+//        }
+////        mangaObj.setAnime(anime.get());
+//        genreObj.setAnimesgenres(anime.get());
+//        return genreRepository.save(genreObj);
+//
+//    }
+//    REFERENCE: https://www.youtube.com/watch?v=f5bdUjEIbrg&t=478s&ab_channel=KrisFoster
+    public Genre createGenre(Genre genreObj){
+        return genreRepository.save(genreObj);
+    }
+
+    //putmapping
+    public Genre putAnimeGenre(Long genreId, Long animeId){
+        Anime anime = animeRepository.findById(animeId).get();
+        Genre genre = genreRepository.findById(genreId).get();
+        genre.assignAnime(anime);
+        return genreRepository.save(genre);
+
+        //handle if the ids dont exist /not found
+    }
 }
 
 
