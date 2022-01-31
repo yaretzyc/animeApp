@@ -338,7 +338,8 @@ public class AnimeService {
     public Genre putAnimeGenre(Long genreId, Long animeId){
         Anime anime = animeRepository.findById(animeId).get();
         Genre genre = genreRepository.findById(genreId).get();
-        genre.assignAnime(anime);
+//        genre.assignAnime(anime);
+        anime.assignGenreToAnime(genre);
         return genreRepository.save(genre);
 
         //handle if the ids dont exist /not found

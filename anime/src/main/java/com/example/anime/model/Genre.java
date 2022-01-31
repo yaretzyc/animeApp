@@ -77,7 +77,7 @@ private Set<Anime> animesgenres = new HashSet<>();
         this.genre = genre;
     }
 
-    public void assignAnime(Anime anime) {
-        animesgenres.add(anime);
-    }
+//    public void assignAnime(Anime anime) {
+//        animesgenres.add(anime);
+//    }
 }

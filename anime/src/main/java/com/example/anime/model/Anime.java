@@ -163,4 +163,9 @@ public class Anime {
     public void setSeason(Integer season) {
         this.season = season;
     }
+
+    public void assignGenreToAnime(Genre genre) {
+        genres.add(genre);
+
+    }
 }
