@@ -15,7 +15,6 @@ import java.util.Optional;
 @RequestMapping(path = "/api")
 public class AnimeController {
 
-    //////////////////dependecy injections\\\\\\\\\\\\\\\\\\\
     @Autowired
     public AnimeService animeService;
 
@@ -41,14 +40,14 @@ public class AnimeController {
 
 
     //GET A SPECIFIC ANIME WITH ITS ID
-    @GetMapping("/animes/{animeId}")
+    @GetMapping("/animes/{animeId}/")
     public Optional<Anime> getAnime(@PathVariable Long animeId){
         return animeService.getAnime(animeId);
     }
 
 
     //UPDATE AN ANIME WITH ITS ID GIVEN
-    @PutMapping("/animes/{animeId}")
+    @PutMapping("/animes/{animeId}/")
     public Anime updateAnime(@PathVariable(value = "animeId")Long animeId,
                              @RequestBody Anime animeObj){
         return animeService.updateAnime(animeId, animeObj);
@@ -56,7 +55,7 @@ public class AnimeController {
 
 
     //OPTION TO ALSO DELETE AN ANIME WITH  ID
-    @DeleteMapping("/animes/{animeId}")
+    @DeleteMapping("/animes/{animeId}/")
     public Optional<Anime> deleteAnime(@PathVariable(value = "animeId")Long animeId){
         return animeService.deleteAnime(animeId);
     }
@@ -130,7 +129,6 @@ public class AnimeController {
 
  /*
     //////////////////GENRE\\\\\\\\\\\\\\\\\\ MANY TO MANY RELATIONSHIP
-    //delete a genre for an anime
     @PutMapping("/anime/{animeId}/genres/")
    */
     //create a genre for an anime
@@ -157,6 +155,12 @@ public class AnimeController {
 
     //get all genres for an anime
 
+    //delete anime from genre
+//    @DeleteMapping("/{genreId}/animes/{animeId}/")
+//    public Anime deleteAnimeGenre(@PathVariable(value = "genreId")Long genreId,
+//                                  @PathVariable(value = "animeId")Long animeId) {
+//        return animeService.deleteAnimeGenre(genreId, animeId);
+//    }
 
 
 

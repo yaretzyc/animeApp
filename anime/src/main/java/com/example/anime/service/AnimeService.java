@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
@@ -136,7 +137,7 @@ public class AnimeService {
     }
      */
 
-    public Optional<Anime> deleteAnime(long animeId){
+    public Optional<Anime> deleteAnime(Long animeId){
         Optional<Anime> anime = animeRepository.findById(animeId);
         if(anime.isPresent()){
             animeRepository.deleteById(animeId);
@@ -243,11 +244,12 @@ public class AnimeService {
 
         System.out.println("service calling createAnimeManga ==>");
         Optional<Anime> anime = animeRepository.findById(animeId);
-        if(anime == null){
+        if(anime.isPresent()){
             throw new InformationNotFoundException("anime with id " + animeId + "not found");
+        }else {
+            mangaObj.setAnime(anime.get());
+            return mangaRepository.save(mangaObj);
         }
-        mangaObj.setAnime(anime.get());
-        return mangaRepository.save(mangaObj);
 
     }
 
@@ -278,6 +280,8 @@ public class AnimeService {
 
 
     //UPDATE A MANGA
+
+
     public Manga updateAnimeManga(Long animeId, Long mangaId, Manga mangaObj){
 
         Optional<Anime> anime = animeRepository.findById(animeId);
@@ -297,6 +301,20 @@ public class AnimeService {
         throw new InformationNotFoundException("anime with id "+ animeId + " not found");
     }
 
+
+
+
+
+//        try {
+//            Manga manga = (mangaRepository.findById(
+//                    animeId).stream().filter(p -> p.getId().equals(mangaId)).findFirst()).get();
+//            manga.setTitle(mangaObj.getTitle());
+//            manga.setVolumeNum(mangaObj.getVolumeNum());
+//            manga.setAuthor(mangaObj.getAuthor());
+//            return mangaRepository.save(manga);
+//        } catch (NoSuchElementException e) {
+//            throw new InformationNotFoundException("anime or manga not found");
+//        }
 
     public Optional<Manga> deleteAnimeManga(Long animeId, Long mangaId){
         Optional<Anime> anime = animeRepository.findById(animeId);
@@ -335,6 +353,7 @@ public class AnimeService {
     }
 
     //putmapping
+//    http://localhost:8080/api/2/animes/4/
     public Genre putAnimeGenre(Long genreId, Long animeId){
         Anime anime = animeRepository.findById(animeId).get();
         Genre genre = genreRepository.findById(genreId).get();
@@ -344,6 +363,16 @@ public class AnimeService {
 
         //handle if the ids dont exist /not found
     }
+    //DELTE GENRE ANIME
+//    public Anime deleteAnimeGenre(Long genreId, Long animeId){
+//        Anime anime= animeRepository.findById(animeId).get();
+//        Genre genre = genreRepository.findById(genreId).get();
+////        genre.
+//
+//        return animeRepository.delete(genreId);
+//
+//    }
+
 }
 
 
